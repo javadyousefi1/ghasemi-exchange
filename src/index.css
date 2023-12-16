@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("./style/font.css");
+
+* {
+  font-family: "kalame";
+  user-select: none;
+}

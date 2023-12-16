@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../assets/font/ttf/Kalameh-Thin.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../assets/font/ttf/Kalameh-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: 300;
+  src:
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("../assets/font/ttf/Kalameh-Light.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: normal;
+  src: 
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("../assets/font/ttf/Kalameh-Light.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: 500;
+  src: 
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("../assets/font/ttf/Kalameh-Medium.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: 600;
+  src: 
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("../assets/font/ttf/Kalameh-SemiBold.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: 700;
+  src:
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("../assets/font/ttf/Kalameh-Bold.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: 800;
+  src: 
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("../assets/font/ttf/Kalameh-ExtraBold.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "kalame";
+  font-style: normal;
+  font-weight: 900;
+  src: 
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("../assets/font/ttf/Kalameh-Black.ttf")
+    format("truetype");
+}
