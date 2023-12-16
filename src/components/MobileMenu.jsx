@@ -42,7 +42,7 @@ const MobileMenu = ({ handleToggleMenu }) => {
           >
             <img src={logo} alt="logo" className="bg-white w-[190px]" />
             <h1 className="text-2xl font-black bg-white text-cetner text-mainBlack">
-              صرافی قاسمی
+              سکه قاسمی
             </h1>
             {/* <p className="text-xs text-gray-400 bg-white">خرید و فروش سکه های طلا</p> */}
             <p className="mt-1 text-sm text-gray-400 bg-white">
