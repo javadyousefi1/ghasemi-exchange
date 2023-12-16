@@ -8,7 +8,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center">Hello new project</div>
+      {/* <div className="flex items-center justify-center">Hello new project</div> */}
     </>
   );
 };

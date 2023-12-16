@@ -1,13 +1,11 @@
-import Footer from "../components/footer";
-import Header from "../components/header";
-const Layout = ({children ,changeHandler}) => {
-    return (
-        <div className="container mx-auto">
-        <Header />
-        {children}
-        <Footer/>
-        </div>
-    );
-}
- 
+import Header from "../components/Header";
+const Layout = ({ children }) => {
+  return (
+    <div dir="rtl" className="container px-4 mx-auto">
+      <Header />
+      {children}
+    </div>
+  );
+};
+
 export default Layout;
