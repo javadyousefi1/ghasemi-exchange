@@ -1,10 +1,11 @@
 // Logo
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import logo from "../assets/images/logo.png";
 // css
 import Styles from "../style/background.module.css";
 import Price from "../components/Price";
 import Faq from "../components/Faq";
+import axios from "axios";
 const HomePage = () => {
   const targetRef = useRef(null);
 
@@ -14,8 +15,16 @@ const HomePage = () => {
     }
   };
 
+  useEffect(() => {
+    axios
+      .get(
+        "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6480.429999716809!2d51.4924993!3d35.6963265!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03c6686d4eed%3A0x3b9f050b6de57b4e!2z2LXYsdin2YHbjCDZgtin2LPZhduM!5e0!3m2!1sen!2s!4v1702738479204!5m2!1sen!2s"
+      )
+      .then((res) => console.log(res.data));
+  }, []);
+
   return (
-    <>
+    <div className="h-[] mb-10">
       <section style={Styles.background}>
         <div className=" h-[calc(100vh-62px)] flex flex-col items-center">
           <img src={logo} alt="logo" />
@@ -182,14 +191,122 @@ const HomePage = () => {
         </div>
       </section>
       {/* FAQ */}
-      <section className="h-[900px]">
+      <section className="">
         <h3 className="my-10 text-xl font-black text-center text-mainBlack">
           پرسش های متداول
         </h3>
 
-        <Faq/>
+        <Faq />
       </section>
-    </>
+      {/* contact us */}
+      <section className="flex flex-col items-center">
+        <h3 className="mt-10 text-xl font-black text-center text-mainBlack">
+          تماس با ما
+        </h3>
+        <p className="px-5 mt-1 text-sm text-center text-gray-500">
+          از راه های زیر می توانید در کوتاه ترین زمان با ما تماس بگیرید
+        </p>
+
+        <div className="w-full p-4 mt-3 bg-white rounded-lg">
+          <div className="flex items-center justify-start gap-x-2">
+            <div className="bg-secondryGold bg-opacity-30 w-[40px] h-[40px] rounded-full flex justify-center items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                  stroke="#eed778"
+                  strokeWidth="1.5"
+                ></path>
+                <path
+                  d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                  stroke="#eed778"
+                  strokeWidth="1.5"
+                ></path>
+              </svg>
+            </div>
+            <p className="text-sm font-bold whitespace-nowrap">آدرس :</p>
+            <p className="text-sm font-bold text-gray-400 whitespace-nowrap">
+              رونیکا مال خونه مامان حسام
+            </p>
+          </div>
+        </div>
+
+        <div className="w-full p-4 mt-3 bg-white rounded-lg">
+          <div className="flex items-center justify-start gap-x-2">
+            <div className="bg-secondryGold bg-opacity-30 w-[40px] h-[40px] rounded-full flex justify-center items-center">
+              <svg
+                className="relative left-1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M17 6v10c0 4-1 5-5 5H6c-4 0-5-1-5-5V6c0-4 1-5 5-5h6c4 0 5 1 5 5ZM11 4.5H7"
+                  stroke="#eed778"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+                <path
+                  d="M9 18.1A1.55 1.55 0 1 0 9 15a1.55 1.55 0 0 0 0 3.1Z"
+                  stroke="#eed778"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+              </svg>
+            </div>
+            <p className="text-sm font-bold whitespace-nowrap">موبایل :</p>
+            <p className="text-sm font-bold text-gray-400 whitespace-nowrap">
+              {" "}
+              123 4868 0990
+            </p>
+          </div>
+        </div>
+
+        <div className="w-full p-4 mt-3 bg-white rounded-lg">
+          <div className="flex items-center justify-start gap-x-2">
+            <div className="bg-secondryGold bg-opacity-30 w-[40px] h-[40px] rounded-full flex justify-center items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M21.97 18.33c0 .36-.08.73-.25 1.09-.17.36-.39.7-.68 1.02-.49.54-1.03.93-1.64 1.18-.6.25-1.25.38-1.95.38-1.02 0-2.11-.24-3.26-.73s-2.3-1.15-3.44-1.98a28.75 28.75 0 0 1-3.28-2.8 28.414 28.414 0 0 1-2.79-3.27c-.82-1.14-1.48-2.28-1.96-3.41C2.24 8.67 2 7.58 2 6.54c0-.68.12-1.33.36-1.93.24-.61.62-1.17 1.15-1.67C4.15 2.31 4.85 2 5.59 2c.28 0 .56.06.81.18.26.12.49.3.67.56l2.32 3.27c.18.25.31.48.4.7.09.21.14.42.14.61 0 .24-.07.48-.21.71-.13.23-.32.47-.56.71l-.76.79c-.11.11-.16.24-.16.4 0 .08.01.15.03.23.03.08.06.14.08.2.18.33.49.76.93 1.28.45.52.93 1.05 1.45 1.58.54.53 1.06 1.02 1.59 1.47.52.44.95.74 1.29.92.05.02.11.05.18.08.08.03.16.04.25.04.17 0 .3-.06.41-.17l.76-.75c.25-.25.49-.44.72-.56.23-.14.46-.21.71-.21.19 0 .39.04.61.13.22.09.45.22.7.39l3.31 2.35c.26.18.44.39.55.64.1.25.16.5.16.78Z"
+                  stroke="#eed778"
+                  strokeWidth="1.5"
+                  strokeMiterlimit="10"
+                ></path>
+              </svg>
+            </div>
+            <p className="text-sm font-bold whitespace-nowrap">تلفن :</p>
+            <p className="text-sm font-bold text-gray-400 whitespace-nowrap">
+              84 84 65 021
+            </p>
+          </div>
+        </div>
+        <iframe
+          className="px-3 mt-4 rounded-md shadow-lg"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6480.429999716809!2d51.4924993!3d35.6963265!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03c6686d4eed%3A0x3b9f050b6de57b4e!2z2LXYsdin2YHbjCDZgtin2LPZhduM!5e0!3m2!1sen!2s!4v1702738479204!5m2!1sen!2s"
+          width="300"
+          height="450"
+          // style="border:0;"
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+    </div>
   );
 };
 
