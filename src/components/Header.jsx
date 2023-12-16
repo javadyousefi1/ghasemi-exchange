@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <>
-      <header>
+      <header className="top-0 left-0 right-0 z-40 px-2 ">
         <div className="flex items-center justify-between">
           <div>
             <button onClick={handleToggleMenu}>
@@ -24,7 +24,7 @@ const Header = () => {
                 >
                   <path
                     d="M3 7h18M3 12h18M3 17h18"
-                    stroke="#fff"
+                    stroke="#111"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                   />

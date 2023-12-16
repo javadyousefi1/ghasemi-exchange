@@ -3,6 +3,14 @@ import { motion } from "framer-motion";
 // image
 import logo from "../assets/images/logo.png";
 const MobileMenu = ({ handleToggleMenu }) => {
+  const menuItem = [
+    "قیمت لحظه ای",
+    "خدمات",
+    "درباره ما",
+    "ثبت نطرات",
+    "  تماس با ما",
+  ];
+
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -28,7 +36,7 @@ const MobileMenu = ({ handleToggleMenu }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="fixed top-0 left-0 z-10 flex justify-center w-screen h-screen bg-white md:hidden"
+        className="fixed top-0 left-0 flex justify-center w-screen h-screen bg-white z-[60] md:hidden"
       >
         <motion.div
           variants={container}
@@ -51,10 +59,9 @@ const MobileMenu = ({ handleToggleMenu }) => {
           </motion.div>
           <motion.nav className="mt-8" variants={item}>
             <ul className="flex flex-col items-center bg-white gap-y-2">
-              <li className="font-medium bg-white text-md">خانه</li>
-              <li className="font-medium bg-white text-md">درباره ما</li>
-              <li className="font-medium bg-white text-md">نظرات کاربران</li>
-              <li className="font-medium bg-white text-md">ارتباط با ما</li>
+              {menuItem.map((item) => (
+                <li className="font-medium bg-white text-md">{item}</li>
+              ))}
             </ul>
           </motion.nav>
 

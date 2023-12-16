@@ -4,8 +4,8 @@
 
 @import url("./style/font.css");
 
-* {
+body {
   font-family: "kalame";
   user-select: none;
-  background-color: #111111;
+  background-color: #ffffff;
 }
