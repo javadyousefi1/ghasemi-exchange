@@ -2,7 +2,7 @@ import { useState } from "react";
 // image
 import logo from "../assets/images/logo.png";
 import MobileMenu from "./MobileMenu";
-const Header = () => {
+const Header = ({ handleSetScroll }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   // toggle menu
@@ -38,7 +38,12 @@ const Header = () => {
         </div>
       </header>
 
-      {isOpenMenu && <MobileMenu handleToggleMenu={handleToggleMenu} />}
+      {isOpenMenu && (
+        <MobileMenu
+          handleToggleMenu={handleToggleMenu}
+          handleSetScroll={handleSetScroll}
+        />
+      )}
     </>
   );
 };

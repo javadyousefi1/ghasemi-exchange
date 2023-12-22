@@ -4,14 +4,15 @@ import { motion } from "framer-motion";
 import logo from "../assets/images/logo.png";
 // rrd
 import { useSearchParams } from "react-router-dom";
-const MobileMenu = ({ handleToggleMenu }) => {
+const MobileMenu = ({ handleToggleMenu, handleSetScroll }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const menuItem = [
     { url: "current-cost", text: "قیمت لحظه ای" },
     { url: "service", text: "خدمات" },
-    { url: "about-us", text: "درباره ما" },
-    { url: "comments", text: "ثبت نطرات" },
+    // { url: "about-us", text: "درباره ما" },
+    { url: "faq", text: "پرسش های متداول" },
+    // { url: "comments", text: "ثبت نطرات" },
     { url: "contact-us", text: "  تماس با ما" },
   ];
 
@@ -36,7 +37,8 @@ const MobileMenu = ({ handleToggleMenu }) => {
   };
 
   const handleMenuClick = (url) => {
-    setSearchParams({ menu: url });
+    // setSearchParams({ menu: url });
+    handleSetScroll(url);
     handleToggleMenu();
   };
 

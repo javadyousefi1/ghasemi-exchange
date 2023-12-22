@@ -1,5 +1,5 @@
 // Logo
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import logo from "../assets/images/logo.png";
 // css
 import Styles from "../style/background.module.css";
@@ -11,8 +11,37 @@ import Header from "../components/Header";
 import { useSearchParams } from "react-router-dom";
 const HomePage = () => {
   const currentCostButtonRef = useRef(null);
+  const serviceRef = useRef(null);
+  const aboutUsRef = useRef(null);
+  const commentsRef = useRef(null);
+  const contactUsRef = useRef(null);
+  const faqRef = useRef(null);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [scroll, setScroll] = useState("");
+
+  useEffect(() => {
+    console.log(scroll);
+    switch (scroll) {
+      case "faq":
+        faqRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "contact-us":
+        contactUsRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "service":
+        serviceRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "current-cost":
+        currentCostButtonRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      default:
+      // Do nothing for unknown scroll values
+    }
+  }, [scroll]);
+
+  const handleSetScroll = (address) => {
+    setScroll(address);
+  };
 
   const handlecurrentCostButton = () => {
     if (currentCostButtonRef.current) {
@@ -20,9 +49,25 @@ const HomePage = () => {
     }
   };
 
+  const [showGoTopButton, setShowGoTopButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowGoTopButton(window.scrollY >= 800);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleGoTopClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
-      <Header />
+      <Header handleSetScroll={handleSetScroll} />
       <div className="h-[] mb-10">
         <section style={Styles.background}>
           <div className=" h-[calc(100vh-50px)] flex flex-col items-center justify-center gap-y-10 ">
@@ -60,7 +105,7 @@ const HomePage = () => {
         </section>
 
         {/* service */}
-        <section className="">
+        <section className="" ref={serviceRef}>
           <h3 className="mb-10 text-xl font-black text-center text-mainBlack">
             خدمات
           </h3>
@@ -190,7 +235,7 @@ const HomePage = () => {
           </div>
         </section>
         {/* FAQ */}
-        <section className="">
+        <section className="" ref={faqRef}>
           <h3 className="my-10 text-xl font-black text-center text-mainBlack">
             پرسش های متداول
           </h3>
@@ -198,7 +243,7 @@ const HomePage = () => {
           <Faq />
         </section>
         {/* contact us */}
-        <section className="flex flex-col items-center">
+        <section className="flex flex-col items-center" ref={contactUsRef}>
           <h3 className="mt-10 text-xl font-black text-center text-mainBlack">
             تماس با ما
           </h3>
@@ -315,6 +360,30 @@ const HomePage = () => {
           </a>
         </section>
       </div>
+
+      {showGoTopButton && (
+        <button
+          onClick={handleGoTopClick}
+          className="fixed left-4 bottom-4 bg-mainGold w-[40px] h-[40px] rounded-lg flex justify-center items-center shadow-xl"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              stroke="#fff"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              stroke-width="1.5"
+              d="M18.07 9.57L12 3.5 5.93 9.57M12 20.5V3.67"
+            ></path>
+          </svg>
+        </button>
+      )}
     </>
   );
 };
