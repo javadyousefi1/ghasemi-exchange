@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="top-0 left-0 right-0 z-40 px-2 ">
+      <header className="top-0 left-0 right-0 z-40 px-4 py-2">
         <div className="flex items-center justify-between">
           <div>
             <button onClick={handleToggleMenu}>
@@ -33,7 +33,7 @@ const Header = () => {
             </button>
           </div>
           <div>
-            <img src={logo} className="w-[62px] h-[62px]" alt="logo" />
+            <img src={logo} className="w-[50px] p-1 " alt="logo" />
           </div>
         </div>
       </header>

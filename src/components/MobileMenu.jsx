@@ -2,13 +2,17 @@
 import { motion } from "framer-motion";
 // image
 import logo from "../assets/images/logo.png";
+// rrd
+import { useSearchParams } from "react-router-dom";
 const MobileMenu = ({ handleToggleMenu }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const menuItem = [
-    "قیمت لحظه ای",
-    "خدمات",
-    "درباره ما",
-    "ثبت نطرات",
-    "  تماس با ما",
+    { url: "current-cost", text: "قیمت لحظه ای" },
+    { url: "service", text: "خدمات" },
+    { url: "about-us", text: "درباره ما" },
+    { url: "comments", text: "ثبت نطرات" },
+    { url: "contact-us", text: "  تماس با ما" },
   ];
 
   const container = {
@@ -30,6 +34,12 @@ const MobileMenu = ({ handleToggleMenu }) => {
       opacity: 1,
     },
   };
+
+  const handleMenuClick = (url) => {
+    setSearchParams({ menu: url });
+    handleToggleMenu();
+  };
+
   return (
     <>
       <motion.div
@@ -48,7 +58,7 @@ const MobileMenu = ({ handleToggleMenu }) => {
             variants={item}
             className="flex flex-col items-center bg-white"
           >
-            <img src={logo} alt="logo" className="bg-white w-[190px]" />
+            <img src={logo} alt="logo" className="bg-white w-[100px] my-10" />
             <h1 className="text-2xl font-black bg-white text-cetner text-mainBlack">
               سکه قاسمی
             </h1>
@@ -60,7 +70,13 @@ const MobileMenu = ({ handleToggleMenu }) => {
           <motion.nav className="mt-8" variants={item}>
             <ul className="flex flex-col items-center bg-white gap-y-2">
               {menuItem.map((item) => (
-                <li className="font-medium bg-white text-md">{item}</li>
+                <li
+                  key={item.text}
+                  className="font-medium bg-white text-md"
+                  onClick={() => handleMenuClick(item.url)}
+                >
+                  {item.text}
+                </li>
               ))}
             </ul>
           </motion.nav>
