@@ -1,7 +1,5 @@
 import dollar from "../assets/images/dollar.png";
-import erou from "../assets/images/erou.JPG";
-import lir from "../assets/images/lir.JPG";
-import derham from "../assets/images/derham.PNG";
+
 
 const Price = ({ text, img }) => {
   return (

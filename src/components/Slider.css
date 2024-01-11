@@ -1,0 +1,11 @@
+/* Adjust the width as needed */
+.swiper-container {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Optional: Adjust the width of your slides if needed */
+  .swiper-slide {
+    width: 200px; /* Set your desired width */
+  }
+  

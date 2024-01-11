@@ -9,6 +9,7 @@ import axios from "axios";
 import Header from "../components/Header";
 // rrd
 import { useSearchParams } from "react-router-dom";
+import AboutUsSlider from "../components/AboutUsSlider";
 const HomePage = () => {
   const currentCostButtonRef = useRef(null);
   const serviceRef = useRef(null);
@@ -33,6 +34,9 @@ const HomePage = () => {
         break;
       case "current-cost":
         currentCostButtonRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "about-us":
+        aboutUsRef.current.scrollIntoView({ behavior: "smooth" });
         break;
       default:
       // Do nothing for unknown scroll values
@@ -65,10 +69,28 @@ const HomePage = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // for date
+  const formatDate = (locale) => {
+    const currentDate = new Date();
+    const options = {
+      weekday: "long",
+      // year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const formattedDate = currentDate.toLocaleDateString(locale, options);
+
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <p className="text-sm">{currentDate.toLocaleDateString(locale)}</p>
+        <p className="text-xs">{formattedDate}</p>
+      </div>
+    );
+  };
   return (
     <>
       <Header handleSetScroll={handleSetScroll} />
-      <div className="h-[] mb-10">
+      <div className="h-[] mb-3  flex flex-col gap-y-8 container px-4 mx-auto">
         <section style={Styles.background}>
           <div className=" h-[calc(100vh-50px)] flex flex-col items-center justify-center gap-y-10 ">
             <img src={logo} alt="logo" className="w-[150px]" />
@@ -81,6 +103,26 @@ const HomePage = () => {
                 خوشحال هستیم که در زمینه ارز و طلا مارو برای مشاوره انتخاب کردید
               </p>
             </div>
+
+            {/* date */}
+
+            <div className="w-full">
+              <div className="grid grid-cols-2 grid-rows-1 gap-x-4">
+                <div className="flex flex-col items-center justify-center">
+                  <p className="pb-1 mb-2 text-sm border-b-2 border-mainGold ">
+                    میلادی
+                  </p>
+                  {formatDate("en-US")} {/* Example with en-US locale */}
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p className="pb-1 mb-2 text-sm border-b-2 border-mainGold ">
+                    خورشیدی
+                  </p>
+                  {formatDate("fa-IR")} {/* Example with fa-IR locale */}
+                </div>
+              </div>
+            </div>
+
             <button
               onClick={handlecurrentCostButton}
               className="px-4 py-2 mt-10 text-sm font-semibold rounded-lg text-mainBlack bg-mainGold "
@@ -91,7 +133,7 @@ const HomePage = () => {
         </section>
 
         {/* price section */}
-        <section ref={currentCostButtonRef} className="h-[600px] flex flex-col">
+        <section ref={currentCostButtonRef} className="flex flex-col ">
           <h3 className="text-xl font-black text-center text-mainBlack">
             قیمت لحظه ای
           </h3>
@@ -234,16 +276,19 @@ const HomePage = () => {
             </div>
           </div>
         </section>
-        {/* FAQ */}
-        <section className="" ref={faqRef}>
+        {/* about us */}
+        <section className="flex flex-col items-center" ref={aboutUsRef}>
           <h3 className="my-10 text-xl font-black text-center text-mainBlack">
-            پرسش های متداول
+            درباره ما
           </h3>
-
-          <Faq />
+          <AboutUsSlider />
         </section>
+
         {/* contact us */}
-        <section className="flex flex-col items-center" ref={contactUsRef}>
+        <section
+          className="flex flex-col items-center gap-y-2"
+          ref={contactUsRef}
+        >
           <h3 className="mt-10 text-xl font-black text-center text-mainBlack">
             تماس با ما
           </h3>
@@ -273,8 +318,36 @@ const HomePage = () => {
                   ></path>
                 </svg>
               </div>
-              <p className="text-sm font-bold whitespace-nowrap">آدرس :</p>
-              <p className="text-sm font-bold text-gray-400 whitespace-nowrap">
+              <p className="text-sm font-bold whitespace-nowrap">شعبه اول :</p>
+              <p className="text-sm font-bold text-gray-400 whitespace-pre-line">
+                تهران پیروزی فلکه دوم نیرو هوایی خیابان 5.30 پاساژ ولیعصر
+              </p>
+            </div>
+          </div>
+          <div className="w-full p-4 mt-3 bg-white rounded-lg">
+            <div className="flex items-center justify-start gap-x-2">
+              <div className="bg-secondryGold bg-opacity-30 w-[40px] h-[40px] rounded-full flex justify-center items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                    stroke="#eed778"
+                    strokeWidth="1.5"
+                  ></path>
+                  <path
+                    d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                    stroke="#eed778"
+                    strokeWidth="1.5"
+                  ></path>
+                </svg>
+              </div>
+              <p className="text-sm font-bold whitespace-nowrap">شعبه دوم :</p>
+              <p className="text-sm font-bold text-gray-400 whitespace-pre-line">
                 حسین آباد , خیابان مژده , پلاک 36
               </p>
             </div>
@@ -339,8 +412,56 @@ const HomePage = () => {
               </p>
             </div>
           </div>
+          {/* instagram */}
+          <a
+            href="https://www.instagram.com/coinexchange.ghasemi?igsh=ZWI2YzEzYmMxYg=="
+            target="_blank"
+          >
+            <div className="mt-3">
+              <div className="flex flex-col items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 gap-y-4">
+                <div className="flex items-center justify-center gap-x-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6c0 5 2 7 7 7Z"
+                      stroke="#fff"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <path
+                      d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"
+                      stroke="#fff"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <path
+                      d="M17.636 7h.012"
+                      stroke="#fff"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                  </svg>
+                  <p className="font-medium text-white whitespace-nowrap">
+                    مارو در اینستاگرام دنبال کنید
+                  </p>
+                  <button className="text-white bg-[#1877f2] py-1 px-3 text-xs rounded-xl">
+                    follow
+                  </button>
+                </div>
+              </div>
+            </div>
+          </a>
+
           <iframe
-            className="px-3 mt-4 rounded-md shadow-lg"
+            className="px-3 mt-8 rounded-md shadow-lg"
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6480.429999716809!2d51.4924993!3d35.6963265!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03c6686d4eed%3A0x3b9f050b6de57b4e!2z2LXYsdin2YHbjCDZgtin2LPZhduM!5e0!3m2!1sen!2s!4v1702738479204!5m2!1sen!2s"
             width="100%"
             height="450"
@@ -359,8 +480,28 @@ const HomePage = () => {
             </button>
           </a>
         </section>
-      </div>
 
+        {/* FAQ */}
+        <section className="" ref={faqRef}>
+          <h3 className="my-10 text-xl font-black text-center text-mainBlack">
+            پرسش های متداول
+          </h3>
+
+          <Faq />
+        </section>
+      </div>
+      {/* footer */}
+      <footer className="flex items-center flex-col gap-y-5 justify-center w-full bg-mainBlack h-[250px] mt-10">
+        <img src={logo} alt="logo" className="w-[100px]" />
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="mb-5 font-bold text-center text-white text-md">سکه قاسمی</h1>
+          <p className="text-sm text-white">خرید و فروش سکه و طلا</p>
+          <p className="text-sm text-center text-white">
+            دارای مجوز رسمی از اتحادیه طلا و سکه و صراف تهران
+          </p>
+        </div>
+      </footer>
+{/* 
       {showGoTopButton && (
         <button
           onClick={handleGoTopClick}
@@ -375,15 +516,15 @@ const HomePage = () => {
           >
             <path
               stroke="#fff"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              stroke-width="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeMiterlimit="10"
+              strokeWidth="1.5"
               d="M18.07 9.57L12 3.5 5.93 9.57M12 20.5V3.67"
             ></path>
           </svg>
         </button>
-      )}
+      )} */}
     </>
   );
 };

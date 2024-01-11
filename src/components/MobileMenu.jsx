@@ -10,7 +10,7 @@ const MobileMenu = ({ handleToggleMenu, handleSetScroll }) => {
   const menuItem = [
     { url: "current-cost", text: "قیمت لحظه ای" },
     { url: "service", text: "خدمات" },
-    // { url: "about-us", text: "درباره ما" },
+    { url: "about-us", text: "درباره ما" },
     { url: "faq", text: "پرسش های متداول" },
     // { url: "comments", text: "ثبت نطرات" },
     { url: "contact-us", text: "  تماس با ما" },
